@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#172b29">
+  <title>LocalLink · Your Wi-Fi, connected</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside id="sidebar" class="sidebar">
+      <div class="brand"><span class="brand-mark">↔</span><span>LocalLink<span class="brand-sub">A LITTLE CLOSER</span></span></div>
+      <div class="network-badge"><span class="dot"></span> YOUR LOCAL NETWORK</div>
+      <div class="nav-label">YOUR SPACE</div>
+      <div class="room-tab"><span class="hash">#</span><span>Shared room</span><span class="room-indicator"></span></div>
+      <div class="people-heading"><span class="nav-label">IN THE ROOM</span><span id="people-count" class="count">0</span></div>
+      <ul id="people" class="people"></ul>
+      <div class="invite-card"><span class="invite-symbol">⌁</span><h3>Same Wi-Fi. Same room.</h3><p>Open this address on another device to join in.</p><code id="room-address"></code><button id="copy-address" class="copy-button">Copy room address <span>↗</span></button><p id="address-hint" class="address-hint" hidden>On other devices, use the local IP address printed in the host’s terminal.</p></div>
+      <div class="profile"><span id="my-avatar" class="avatar">?</span><div><strong id="my-name">Not connected</strong><small>This is you</small></div><button id="leave" class="icon-button" title="Leave room" aria-label="Leave room">↪</button></div>
+    </aside>
+    <main>
+      <header class="header"><div class="room-title"><button id="menu" class="mobile-menu icon-button" aria-label="Toggle room details" aria-expanded="false">☰</button><span class="header-hash">#</span><div><h1>Shared room</h1><p>Good conversations. No distance.</p></div></div><span id="connection" class="connection"><span class="dot"></span><span id="connection-text">Connecting</span></span></header>
+      <div class="room-note"><span>⌁</span> A shared space for everyone on your network.<span class="note-right">Messages & files, all local</span></div>
+      <section id="timeline" class="timeline" aria-label="Conversation">
+        <button id="older" class="older" hidden>Load earlier messages</button>
+        <div id="welcome" class="welcome"><div class="welcome-mark">↔</div><span class="eyebrow">WELCOME TO YOUR LOCAL SPACE</span><h2>A connection starts<br>with a hello.</h2><p>Chat, share a file, or send something good.<br>It all stays on the host computer.</p><div class="welcome-tags"><span>↗ Instant sharing</span><span>⌁ No internet needed</span></div></div>
+        <div id="messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+      </section>
+      <div class="composer-area">
+        <div id="notice" class="notice" role="status" hidden></div>
+        <div id="upload-panel" class="upload-panel" hidden><div><span id="upload-label">Uploading…</span><button id="cancel-upload" class="text-button">Cancel</button></div><progress id="upload-progress" max="100" value="0"></progress></div>
+        <form id="composer" class="composer"><button id="attach" type="button" class="attach-button" title="Share files" aria-label="Share files">＋</button><textarea id="message-input" rows="1" maxlength="4000" placeholder="Send a message to the room…" aria-label="Message"></textarea><button id="send" type="submit" class="send-button" aria-label="Send message">↑</button></form>
+        <div class="composer-foot"><span id="file-limit">Drop files here to share</span><span id="send-hint">Enter to send <span class="key">↵</span> <span class="desktop-hint">· Shift + Enter for a new line</span></span></div>
+        <input id="file-input" type="file" multiple hidden>
+      </div>
+      <div id="drop-overlay" class="drop-overlay" hidden><div><span>↧</span><h2>Drop it into the conversation.</h2><p>Your files will be shared with everyone in this room.</p></div></div>
+    </main>
+  </div>
+  <dialog id="join-dialog"><form id="join-form"><div class="join-mark">↔</div><span class="eyebrow">YOUR WI-FI, CONNECTED</span><h2>Make yourself at home.</h2><p>Pick a name so the room knows it’s you.</p><label for="display-name">Display name</label><input id="display-name" name="name" maxlength="32" placeholder="e.g. Mohammad" autocomplete="nickname" required><div id="password-field" hidden><label for="room-password">Room password</label><input id="room-password" type="password" autocomplete="current-password"></div><p id="join-error" class="join-error" role="alert"></p><button id="join-button" class="join-button">Join the room <span>↗</span></button><small>Everyone in this room can read messages and download shared files.</small></form></dialog>
+</body>
+</html>
